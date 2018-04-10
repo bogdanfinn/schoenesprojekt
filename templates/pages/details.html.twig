@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        {% if pokemon is not null %}
+            <div class="card text-center">
+                <img class="card-img-top" src="{{ pokemon.image }}" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pokemon.name }}</h5>
+                    <p class="card-text">
+                        Gewicht: {{ pokemon.weight }} <br>
+                        Größe: {{ pokemon.height }}
+                    </p>
+                    <a href="{{ path('pokemon_index') }}" class="btn btn-primary">Zurück zur Übersicht</a>
+                </div>
+            </div>
+        {% else %}
+            <p class="text-center">Kein Pokemon gefunden</p>
+        {% endif %}
+    </div>
+{% endblock %}
