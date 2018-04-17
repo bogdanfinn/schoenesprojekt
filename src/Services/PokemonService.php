@@ -5,10 +5,6 @@ namespace App\Services;
 use App\Entity\Pokemon;
 use Doctrine\ORM\EntityManagerInterface;
 
-/**
- * Class PokemonService
- * @package App\Services
- */
 class PokemonService
 {
     /**
@@ -79,6 +75,14 @@ class PokemonService
         $this->entityManager->flush();
 
         return $pokemon;
+    }
+
+    /**
+     * @return array|Pokemon[]
+     */
+    public function getAll(): array
+    {
+        return $this->entityManager->getRepository(Pokemon::class)->findAll();
     }
 
 }

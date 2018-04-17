@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Bild</th>
+        <th scope="col">Gewicht</th>
+        <th scope="col">Größe</th>
+        <th scope="col">Aktion</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for pokemon in pokemons %}
+        <tr>
+            <th scope="row">{{ pokemon.id }}</th>
+            <td>{{ pokemon.name }}</td>
+            <td><img src="{{ pokemon.image }}" /></td>
+            <td>{{ pokemon.weight }}</td>
+            <td>{{ pokemon.height }}</td>
+            <td><a class="btn btn-primary" href="{{ path('pokemon_details', {'id': pokemon.id}) }}">Details</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
