@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Pokemon;
 use App\Services\PokemonService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

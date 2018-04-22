@@ -7,29 +7,20 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class PokemonService
 {
-    /**
-     *
-     */
     const API_BASE_URL = 'http://pokeapi.co/api/v2/pokemon/{id}';
 
-    /**
-     * @var EntityManagerInterface
-     */
     private $entityManager;
 
-    /**
-     * PokemonService constructor.
-     * @param EntityManagerInterface $entityManager
-     */
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @param int $id
-     * @return Pokemon|null
-     */
+    public function getAll(): array
+    {
+        return $this->entityManager->getRepository(Pokemon::class)->findAll();
+    }
+
     public function getPokemonById(int $id): ?Pokemon
     {
         $pokemon = $this->entityManager->getRepository(Pokemon::class)->find($id);
@@ -47,10 +38,6 @@ class PokemonService
         }
     }
 
-    /**
-     * @param int $id
-     * @return array
-     */
     private function callPokemonApi(int $id): array
     {
         $url = str_replace('{id}', $id, self::API_BASE_URL);
@@ -58,10 +45,6 @@ class PokemonService
         return json_decode(file_get_contents($url), true);
     }
 
-    /**
-     * @param array $apiResponse
-     * @return Pokemon
-     */
     private function transformApiResponse(array $apiResponse): Pokemon
     {
         $pokemon = new Pokemon();
@@ -76,13 +59,4 @@ class PokemonService
 
         return $pokemon;
     }
-
-    /**
-     * @return array|Pokemon[]
-     */
-    public function getAll(): array
-    {
-        return $this->entityManager->getRepository(Pokemon::class)->findAll();
-    }
-
 }

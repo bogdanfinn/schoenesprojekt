@@ -74,6 +74,22 @@ class Pokemon
     }
 
     /**
+     * @return string
+     */
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage(string $image)
+    {
+        $this->image = $image;
+    }
+
+    /**
      * @return int
      */
     public function getWeight(): int
@@ -105,19 +121,6 @@ class Pokemon
         $this->height = $height;
     }
 
-    /**
-     * @return string
-     */
-    public function getImage(): string
-    {
-        return $this->image;
-    }
 
-    /**
-     * @param string $image
-     */
-    public function setImage(string $image)
-    {
-        $this->image = $image;
-    }
+
 }
