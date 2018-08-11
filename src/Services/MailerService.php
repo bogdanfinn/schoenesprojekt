@@ -18,6 +18,7 @@ class MailerService
         $message = (new \Swift_Message('Kontaktformular'))
             ->setFrom('seminar@bogdanfinn.de')
             ->setTo('bogdan.finn@googlemail.com')
+            ->setReplyTo($enquiry->getEmail())
             ->setBody($this->createEmailBody($enquiry));
 
         $this->mailer->send($message);

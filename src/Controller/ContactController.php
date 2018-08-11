@@ -19,7 +19,7 @@ class ContactController extends Controller
         $enquiry = new Enquiry();
         $form = $this->createForm(EnquiryType::class, $enquiry);
 
-        if ($request->getMethod() == Request::METHOD_POST) {
+        if ($request->getMethod() === Request::METHOD_POST) {
             $form->handleRequest($request);
 
             if ($form->isValid()) {
